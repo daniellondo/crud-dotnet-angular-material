@@ -1,0 +1,61 @@
+<table mat-table [dataSource]="dataSource" matSort aria-label="Elements">
+  <ng-container matColumnDef="branchId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Branch Id</th>
+    <td mat-cell *matCellDef="let row">{{ row.branchId }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="code">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Code</th>
+    <td mat-cell *matCellDef="let row">{{ row.code }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+    <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+    <td mat-cell *matCellDef="let row">{{ row.address }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="identification">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Identification</th>
+    <td mat-cell *matCellDef="let row">{{ row.identification }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="createDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Creation Date</th>
+    <td mat-cell *matCellDef="let row">{{ row.createDate | date:'shortDate' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="currencyId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Currency</th>
+    <td mat-cell *matCellDef="let row">{{ row.currencyId }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let row; let i = index">
+      <button mat-icon-button color="primary" (click)="startEdit(row)">
+        <mat-icon aria-label="Edit">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="accent" (click)="deleteItem(row)">
+        <mat-icon aria-label="Delete">delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator
+  #paginator
+  [length]="dataSource.data.length"
+  [pageIndex]="0"
+  [pageSize]="3"
+  [pageSizeOptions]="[3, 6, 9]"
+  aria-label="Select page"
+>
+</mat-paginator>

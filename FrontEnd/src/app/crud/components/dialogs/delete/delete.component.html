@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Delete Branch</h1>
+<div mat-dialog-content>
+  <h3 mat-dialog-title>Are you sure?</h3>
+  <div mat-dialog-content>
+    BranchId: {{data.branch.branchId}}<p></p>
+    Code: {{data.branch.code}}<p></p>
+    Description: {{data.branch.description}}<p></p>
+    Address: {{data.branch.address}}<p></p>
+    Identification: {{data.branch.identification}}<p></p>
+    Creation Date: {{data.branch.createDate}}<p></p>
+    Currency: {{data.branch.currencyId}}<p></p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close tabindex="-1">No</button>
+  <button mat-button mat-dialog-close type="submit" (click)="confirmDelete()">Delete</button>
+</div>
+
+

@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Add Branch</h1>
+<div mat-dialog-content>
+  <form [formGroup]="branchform" (ngSubmit)="onSubmit()" class="container">
+
+    <mat-form-field color="accent" class="mat-form-field form">
+      <input matInput id="code" type="number" formControlName="code" placeholder="Code" #input/>
+      <mat-error *ngIf="isValidField('code')">{{ getFieldError('code') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <input matInput id="description" formControlName="description" placeholder="Description" #input/>
+      <mat-error *ngIf="isValidField('description')">{{ getFieldError('description') }}</mat-error>
+      <mat-hint align="end">{{input.value.length || 0}}/250</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <input matInput id="address" formControlName="address" placeholder="Address" #input/>
+      <mat-error *ngIf="isValidField('address')">{{ getFieldError('address') }}</mat-error>
+      <mat-hint align="end">{{input.value.length || 0}}/250</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <input matInput id="identification" formControlName="identification" placeholder="Identification" #input/>
+      <mat-error *ngIf="isValidField('identification')">{{ getFieldError('identification') }}</mat-error>
+      <mat-hint align="end">{{input.value.length || 0}}/50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Creation Date</mat-label>
+      <input matInput [matDatepicker]="picker" id="createDate" formControlName="createDate" [min]="minDate" placeholder="Creation Date" >
+      <mat-hint align="end">MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Currency</mat-label>
+      <mat-select id="currencyId" formControlName="currencyId" placeholder="Currency">
+        <mat-option *ngFor="let currency of currencies" [value]="currency.currencyId">
+          {{currency.currency}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>No</button>
+      <button mat-button mat-dialog-close type="submit" [disabled]="!branchform.valid" (click)="addBranch()">Ok</button>
+    </div>
+  </form>
+
+</div>
+
